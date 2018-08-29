@@ -1,0 +1,35 @@
+body {
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  font-family: sans-serif;
+}
+
+#loginForm{
+  max-width: 600px;
+  max-height: 600px;
+  margin: 0 auto;
+}
+
+#loginForm input{
+  display: block;
+  width:100%;
+  padding: 10px;
+}
+
+#loginForm button{
+  
+  width: 50%;
+  height:auto;
+  padding: 10px;
+  margin: 10px auto;
+}
+
+#vAtomDisplayForm{
+  width: 960px;
+  margin: 0 auto;
+  border: 1px solid #222;
+}
+#vAtomDisplayForm label{
+  display: block;
+}
