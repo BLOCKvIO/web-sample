@@ -4,13 +4,13 @@
 
 You will need a `APPID`  in order to run the sample application.
 
-To obtain a key, You will have to register at : https://developer.blockv.io/request-access to request a development key.
+To obtain a key, you will have to register at : https://developer.blockv.io/request-access to request a development key.
 
-Once you have obtained a key, Simply open the `src/Common/Blockv.js` file and replace `{{APPID}}` with your key.
+Once you have obtained a key, simply open the `src/Common/Blockv.js` file and replace `{{APPID}}` with your key.
 
 ## Installation
 
-Download the repo, Make sure you have Node.js & npm installed on your machine.
+Download the repo, make sure you have Node.js & npm installed on your machine.
 
 ### How do I know if I have node isntalled?
 
@@ -20,7 +20,7 @@ Type in <code>node -v</code>
 
 If your terminal responds with a version - You should be ready to proceed to installation
 
-If your terminal responds with an error, You can install node.js from here: https://nodejs.org/en/
+If your terminal responds with an error, you can install node.js from here: https://nodejs.org/en/
 
 Once you have completed the Node.js and NPM install, follow the instructions below:
 
