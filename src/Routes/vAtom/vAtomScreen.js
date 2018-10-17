@@ -18,6 +18,7 @@ const styles = {
       height: 0,
       paddingTop: '56.25%', // 16:9
     },
+    
   };
 
 export default class vAtomScreen extends React.Component {
@@ -33,10 +34,10 @@ export default class vAtomScreen extends React.Component {
     componentDidMount(){
         const vid = this.props.match.params.id;
         BLOCKv.Vatoms.getUserVatoms([vid]).then(e => {
-            let res = e.vatoms[0]['vAtom::vAtomType'].resources;
-            let sta = e.vatoms[0]['vAtom::vAtomType'].states;
-            this.setState({vatom : e.vatoms[0], resources: res, states: sta});
-            console.log(e.vatoms[0]); 
+            let res = e[0].properties.resources;
+            let sta = e[0].properties.states;
+            this.setState({vatom : e[0], resources: res, states: sta});
+            console.log(e[0]); 
         });
         
         
@@ -61,84 +62,84 @@ export default class vAtomScreen extends React.Component {
                     <hr />
                     <label>Modified: {this.state.vatom && this.state.vatom.when_modified}</label>
                     <hr />
-                    <label>Title: {this.state.vatom && this.state.vatom['vAtom::vAtomType'].title}</label>
+                    <label>Title: {this.state.vatom && this.state.vatom.properties.title}</label>
                     <hr />
-                    <label>Acquirable: {this.state.vatom && JSON.stringify(this.state.vatom['vAtom::vAtomType'].acquirable)}</label>
+                    <label>Acquirable: {this.state.vatom && JSON.stringify(this.state.vatom.properties.acquirable)}</label>
                     <hr />
-                    <label>Author: {this.state.vatom && this.state.vatom['vAtom::vAtomType'].author}</label>
+                    <label>Author: {this.state.vatom && this.state.vatom.properties.author}</label>
                     <hr />
-                    <label>Category: {this.state.vatom && this.state.vatom['vAtom::vAtomType'].category}</label>
+                    <label>Category: {this.state.vatom && this.state.vatom.properties.category}</label>
                     <hr />
-                    <label>Cloned From: {this.state.vatom && this.state.vatom['vAtom::vAtomType'].cloned_from}</label>
+                    <label>Cloned From: {this.state.vatom && this.state.vatom.properties.cloned_from}</label>
                     <hr />
-                    <label>Cloning Score: {this.state.vatom && this.state.vatom['vAtom::vAtomType'].cloning_score}</label>
+                    <label>Cloning Score: {this.state.vatom && this.state.vatom.properties.cloning_score}</label>
                     <hr />
-                    <label>Description: {this.state.vatom && this.state.vatom['vAtom::vAtomType'].description}</label>
+                    <label>Description: {this.state.vatom && this.state.vatom.properties.description}</label>
                     <hr />
-                    <label>Disabled: {this.state.vatom && JSON.stringify(this.state.vatom['vAtom::vAtomType'].disabled)}</label>
+                    <label>Disabled: {this.state.vatom && JSON.stringify(this.state.vatom.properties.disabled)}</label>
                     <hr />
-                    <label>Dropped: {this.state.vatom && JSON.stringify(this.state.vatom['vAtom::vAtomType'].dropped)}</label>
+                    <label>Dropped: {this.state.vatom && JSON.stringify(this.state.vatom.properties.dropped)}</label>
                     <hr />
-                    <label>In Contract: {this.state.vatom && JSON.stringify(this.state.vatom['vAtom::vAtomType'].in_contract)}</label>
+                    <label>In Contract: {this.state.vatom && JSON.stringify(this.state.vatom.properties.in_contract)}</label>
                     <hr />
-                    <label>In Contract With: {this.state.vatom && this.state.vatom['vAtom::vAtomType'].in_contract_with}</label>
+                    <label>In Contract With: {this.state.vatom && this.state.vatom.properties.in_contract_with}</label>
                     <hr />
-                    <label>Notify Message: {this.state.vatom && this.state.vatom['vAtom::vAtomType'].notify_msg}</label>
+                    <label>Notify Message: {this.state.vatom && this.state.vatom.properties.notify_msg}</label>
                     <hr />
-                    <label>Number of Clones: {this.state.vatom && this.state.vatom['vAtom::vAtomType'].num_direct_clones}</label>
+                    <label>Number of Clones: {this.state.vatom && this.state.vatom.properties.num_direct_clones}</label>
                     <hr />
-                    <label>Owner: {this.state.vatom && this.state.vatom['vAtom::vAtomType'].owner}</label>
+                    <label>Owner: {this.state.vatom && this.state.vatom.properties.owner}</label>
                     <hr />
-                    <label>Parent ID: {this.state.vatom && this.state.vatom['vAtom::vAtomType'].parent_id}</label>
+                    <label>Parent ID: {this.state.vatom && this.state.vatom.properties.parent_id}</label>
                     <hr />
-                    <label>Publisher FQDN: {this.state.vatom && this.state.vatom['vAtom::vAtomType'].publisher_fqdn}</label>
+                    <label>Publisher FQDN: {this.state.vatom && this.state.vatom.properties.publisher_fqdn}</label>
                     <hr />
-                    <label>Redeemable: {this.state.vatom && JSON.stringify(this.state.vatom['vAtom::vAtomType'].redeemable)}</label>
+                    <label>Redeemable: {this.state.vatom && JSON.stringify(this.state.vatom.properties.redeemable)}</label>
                     <hr />
-                    <label>Root Type: {this.state.vatom && this.state.vatom['vAtom::vAtomType'].root_type}</label>
+                    <label>Root Type: {this.state.vatom && this.state.vatom.properties.root_type}</label>
                     <hr />
-                    <label>Template: {this.state.vatom && this.state.vatom['vAtom::vAtomType'].template}</label>
+                    <label>Template: {this.state.vatom && this.state.vatom.properties.template}</label>
                     <hr />
-                    <label>Template Variation: {this.state.vatom && this.state.vatom['vAtom::vAtomType'].template_variation}</label>
+                    <label>Template Variation: {this.state.vatom && this.state.vatom.properties.template_variation}</label>
                     <hr />
-                    <label>Tradeable: {this.state.vatom && JSON.stringify(this.state.vatom['vAtom::vAtomType'].tradeable)}</label>
+                    <label>Tradeable: {this.state.vatom && JSON.stringify(this.state.vatom.properties.tradeable)}</label>
                     <hr />
-                    <label>Transferable: {this.state.vatom && JSON.stringify(this.state.vatom['vAtom::vAtomType'].transferable)}</label>
+                    <label>Transferable: {this.state.vatom && JSON.stringify(this.state.vatom.properties.transferable)}</label>
                     <hr />
-                    <label>Transferred By: {this.state.vatom && this.state.vatom['vAtom::vAtomType'].transferred_by}</label>
+                    <label>Transferred By: {this.state.vatom && this.state.vatom.properties.transferred_by}</label>
                     <hr />
 
                     <div>
                         <h3>Commerce</h3>
-                        <label>Pricing Type: {this.state.vatom && this.state.vatom['vAtom::vAtomType'].commerce.pricing.pricingType}</label>
+                        <label>Pricing Type: {this.state.vatom && this.state.vatom.properties.commerce.pricing.pricingType}</label>
                         <hr />
-                        <label>Currency: {this.state.vatom && this.state.vatom['vAtom::vAtomType'].commerce.pricing.value.currency}</label>
+                        <label>Currency: {this.state.vatom && this.state.vatom.properties.commerce.pricing.value.currency}</label>
                         <hr />
-                        <label>Price: {this.state.vatom && this.state.vatom['vAtom::vAtomType'].commerce.pricing.value.price}</label>
+                        <label>Price: {this.state.vatom && this.state.vatom.properties.commerce.pricing.value.price}</label>
                         <hr />
-                        <label>Valid From: {this.state.vatom && this.state.vatom['vAtom::vAtomType'].commerce.pricing.value.valid_from}</label>
+                        <label>Valid From: {this.state.vatom && this.state.vatom.properties.commerce.pricing.value.valid_from}</label>
                         <hr />
-                        <label>Valid Through: {this.state.vatom && this.state.vatom['vAtom::vAtomType'].commerce.pricing.value.valid_through}</label>
+                        <label>Valid Through: {this.state.vatom && this.state.vatom.properties.commerce.pricing.value.valid_through}</label>
                         <hr />
-                        <label>Vat Included: {this.state.vatom && JSON.stringify(this.state.vatom['vAtom::vAtomType'].commerce.pricing.value.vat_included)}</label>
+                        <label>Vat Included: {this.state.vatom && JSON.stringify(this.state.vatom.properties.commerce.pricing.value.vat_included)}</label>
                         <hr />
                     </div>
 
                     <div>
                         <h3>Geo Pos</h3>
-                        <label>Reql Type: {this.state.vatom && this.state.vatom['vAtom::vAtomType'].geo_pos.$reql_type$}</label>
+                        <label>Reql Type: {this.state.vatom && this.state.vatom.properties.geo_pos.$reql_type$}</label>
                         <hr />
-                        <label>Type: {this.state.vatom && this.state.vatom['vAtom::vAtomType'].geo_pos.type}</label>
+                        <label>Type: {this.state.vatom && this.state.vatom.properties.geo_pos.type}</label>
                         <hr />
-                        <label>Latitude: {this.state.vatom && JSON.stringify(this.state.vatom['vAtom::vAtomType'].geo_pos.coordinates[0])}</label>
+                        <label>Latitude: {this.state.vatom && JSON.stringify(this.state.vatom.properties.geo_pos.coordinates[0])}</label>
                         <hr />
-                        <label>Longitude: {this.state.vatom && JSON.stringify(this.state.vatom['vAtom::vAtomType'].geo_pos.coordinates[1])}</label>
+                        <label>Longitude: {this.state.vatom && JSON.stringify(this.state.vatom.properties.geo_pos.coordinates[1])}</label>
                         <hr />
                     </div>
 
                     <div>
                         <h3>Resources</h3>
-                        {this.state.resources.map(res =>  <span key={res.name}><label>{res.name}: {res.value.value}</label> <hr /></span> )}
+                        {this.state.resources.map(res =>  <span key={res.name}><label>{res.name}: {decodeURI(res.value.value)}</label> <hr /></span> )}
                     </div> 
                     <div>
                         <h3>States</h3>
@@ -146,9 +147,9 @@ export default class vAtomScreen extends React.Component {
                     </div>
                     <div>
                         <h3>Visibility</h3>
-                        <label>Type: {this.state.vatom && this.state.vatom['vAtom::vAtomType'].visibility.type}</label>
+                        <label>Type: {this.state.vatom && this.state.vatom.properties.visibility.type}</label>
                         <hr />
-                        <label>Value: {this.state.vatom && this.state.vatom['vAtom::vAtomType'].visibility.value}</label>
+                        <label>Value: {this.state.vatom && this.state.vatom.properties.visibility.value}</label>
                         <hr />
                         
                     </div>               

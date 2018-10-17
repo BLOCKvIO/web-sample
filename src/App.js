@@ -7,6 +7,7 @@ import InventoryScreen from './Routes/Inventory/InventoryScreen'
 import vAtomScreen from './Routes/vAtom/vAtomScreen'
 import RegisterScreen from './Routes/Register/RegisterScreen'
 import ProfileScreen from './Routes/Profile/ProfileScreen';
+import FaceScreen from './Routes/Face/FaceScreen'
 
 
 var About = props => <div>My App</div>
@@ -35,6 +36,7 @@ class App extends Component {
             <Route path='/register' component={RegisterScreen} />
             <Route path='/inventory' component={InventoryScreen} />
             <Route path='/profile' component={ProfileScreen} />
+            <Route path='/face/:id' component={FaceScreen} />
             <Route path='/vatom/:id' component={vAtomScreen} />
             <Route path='/logout' component={e => <div>Logout will occur here!</div>} />
             <Route component={LoginScreen} />
