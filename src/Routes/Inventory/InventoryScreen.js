@@ -27,13 +27,11 @@ export default class InventoryScreen extends React.Component {
         let vatoms =  e.filter(vatom => {
             //::vAtom::CoinWallet
             if (vatom.properties.template.indexOf('::vAtom::CoinWallet') > -1) {
-              console.log('there is a wallet')
               return false
             }
               
             //::vAtom::Avatar
             if (vatom.properties.template.indexOf('::vAtom::Avatar') > -1) {
-                console.log("there is an avatar");
                 return false
             }
             

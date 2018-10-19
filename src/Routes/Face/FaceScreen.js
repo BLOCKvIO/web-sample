@@ -14,10 +14,6 @@ export default class FaceScreen extends React.Component {
         super(props)
         this.state = {
             vatom: null,
-            iconView: null,
-            cardView: null,
-            engagedView: null,
-            fullscreenView: null,
             loaded : false
 
         }
@@ -43,9 +39,9 @@ export default class FaceScreen extends React.Component {
             <h1>{this.state.vatom.properties.title}</h1>
 
             <VatomViewContainer vatom={this.state.vatom} fsp={FaceSelection.Icon} style={{ width:'100px', height:'100px', margin: '0 auto'}} />
-            <VatomViewContainer vatom={this.state.vatom} fsp={FaceSelection.Card} style={{ width:'300px', height:'600px', margin: '0 auto'}} />
+            <VatomViewContainer vatom={this.state.vatom} fsp={FaceSelection.Card} style={{ width:'375px', height:'600px', margin: '0 auto'}} />
             <VatomViewContainer vatom={this.state.vatom} fsp={FaceSelection.Engaged} style={{ width:'300px', height:'600px', margin: '0 auto'}} />
-            <VatomViewContainer vatom={this.state.vatom} fsp={FaceSelection.FullScreen} style={{ width:'100px', height:'100px', margin: '0 auto'}} />
+            <VatomViewContainer vatom={this.state.vatom} fsp={FaceSelection.FullScreen} style={{ width:'800px', height:'600px', margin: '0 auto'}} />
 
         </React.Fragment>
     }

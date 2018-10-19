@@ -35,9 +35,7 @@ export default class vAtomScreen extends React.Component {
         const vid = this.props.match.params.id;
         BLOCKv.Vatoms.getUserVatoms([vid]).then(e => {
             let res = e[0].properties.resources;
-            let sta = e[0].properties.states;
-            this.setState({vatom : e[0], resources: res, states: sta});
-            console.log(e[0]); 
+            this.setState({vatom : e[0], resources: res});
         });
         
         
