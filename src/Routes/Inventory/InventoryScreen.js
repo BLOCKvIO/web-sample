@@ -5,7 +5,8 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import { withStyles } from '@material-ui/core/styles';
 import TopBar from '../../Common/TopBar';
-
+import VatomViewContainer from '../../Components/VatomViewContatiner'
+import {FaceSelection} from '@blockv/sdk/face'
 
 if(!BLOCKv.UserManager.isLoggedIn)
  window.location.hash = '/login';
@@ -15,7 +16,7 @@ export default class InventoryScreen extends React.Component {
         super(props);
         this.state = {}
         this.state.vatoms = []
-
+        this.container = React.createRef();
         
         
     }   
@@ -23,16 +24,14 @@ export default class InventoryScreen extends React.Component {
     componentDidMount(){
         BLOCKv.Vatoms.getUserInventory().then(e => {
             // Filter
-        let vatoms =  e.vatoms.filter(vatom => {
+        let vatoms =  e.filter(vatom => {
             //::vAtom::CoinWallet
-            if (vatom['vAtom::vAtomType'].template.indexOf('::vAtom::CoinWallet') > -1) {
-              console.log('there is a wallet')
+            if (vatom.properties.template.indexOf('::vAtom::CoinWallet') > -1) {
               return false
             }
               
             //::vAtom::Avatar
-            if (vatom['vAtom::vAtomType'].template.indexOf('::vAtom::Avatar') > -1) {
-                console.log("there is an avatar");
+            if (vatom.properties.template.indexOf('::vAtom::Avatar') > -1) {
                 return false
             }
             
@@ -43,24 +42,24 @@ export default class InventoryScreen extends React.Component {
 
         this.setState({vatoms : vatoms});
         })
+
+        
     }
 
     render() {
        
-        
         return <React.Fragment>
           <TopBar />
           <h1>Inventory</h1>
           <div style={{ display: "flex", flexWrap: "wrap", width: '95%', margin: '0 auto' }}>
             {this.state.vatoms.map(vatom => 
-                <Card key={vatom.id} style={{ margin: 10 }} onClick={e => window.location.hash='/vatom/'+vatom.id}>
-                    <CardMedia
-                        style={{height:'160px', width: '170px', padding:'10px'}}
-                        image= {BLOCKv.UserManager.encodeAssetProvider(vatom['vAtom::vAtomType'].resources.find(res => res.name == 'ActivatedImage').value.value)}
-                        title={vatom['vAtom::vAtomType'].title}
-                    />
+                <Card 
+                    key={vatom.id} 
+                    style={{ margin: 10, width:'170px', height:'170px' }} 
+                    onClick={e => window.location.hash='/face/'+vatom.id}>
+                    <VatomViewContainer vatom={vatom} fsp={FaceSelection.Icon} style={{ width:'100px', height:'100px', margin: '0 auto'}}  /> 
                     <CardContent style={{fontSize: '12px'}}>
-                    {vatom['vAtom::vAtomType'].title}
+                    {vatom.properties.title}
                     </CardContent>
             </Card>
             

@@ -29,6 +29,7 @@ function ButtonAppBar(props) {
   let backButton = <Button color="inherit" onClick={ e => goBack() }>Back</Button>;
   let logoutButton = '';
   let profileButton = <Button color="inherit" onClick={e => window.location.hash='/profile'}>Profile</Button>;
+  let infoButton = <Button color="inherit" onClick={e => window.location.hash='/vatom/'+ props.showInfo}>Info</Button>;
   
   if(props.noProfile)
    profileButton = '';
@@ -49,6 +50,7 @@ function ButtonAppBar(props) {
           <Typography variant="title" color="inherit" className={classes.flex}>
             BLOCKv Sample Application
           </Typography>
+          {(props.showInfo) ? infoButton : ''}
           {profileButton}
           {logoutButton}
         </Toolbar>

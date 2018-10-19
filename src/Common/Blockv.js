@@ -1,7 +1,7 @@
-import BLOCKv from '@blockv/sdk'
+import Blockv from '@blockv/sdk/face'
 
-export default new BLOCKv({
-    "appID" : "{{ YOUR APP ID HERE}}",
+export default new Blockv({
+    "appID" : "{{APPID}}",
     "server" : "https://api.blockv.io",
     "websocketAddress" : "wss://newws.blockv.io",
     "prefix" : "dev"
