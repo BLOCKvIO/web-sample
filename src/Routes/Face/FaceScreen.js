@@ -61,9 +61,9 @@ export default class FaceScreen extends React.Component {
                 </Card>
 
                 {/* Card face */}
-                <Card style={{ width: 800, margin: 20, display: 'inline-block', verticalAlign: 'top' }}>
+                <Card style={{ position: 'relative', width: 'calc(100% - 80px)', margin: 20, display: 'inline-block', verticalAlign: 'top' }}>
                     <CardHeader subheader='Fullscreen' style={{ backgroundColor: 'rgba(0, 0, 0, 0.03)' }} />
-                    <VatomViewContainer vatom={this.state.vatom} fsp={FaceSelection.FullScreen} style={{ width: 800, height: 600, margin: '0 auto'}} />
+                    <VatomViewContainer vatom={this.state.vatom} fsp={FaceSelection.FullScreen} style={{ width: '100%', height: 600, margin: '0 auto'}} />
                 </Card>
 
             </div>
