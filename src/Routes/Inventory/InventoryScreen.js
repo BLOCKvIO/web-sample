@@ -53,6 +53,19 @@ export default class InventoryScreen extends React.Component {
 
     render() {
 
+        // Create custom face picker which will pick non-heavy Icon faces only
+        const LightIconsOnly = vatom => {
+
+            // Get icon face
+            let face = FaceSelection.Icon(vatom)
+            let faceURL = face && face.properties.display_url.toLowerCase()
+
+            // Return it, only if it's not a heavy face
+            if (faceURL == 'native://generic-3d') return null
+            else return face
+
+        }
+
         return <React.Fragment>
           <TopBar />
           <h1>Inventory</h1>
@@ -62,7 +75,7 @@ export default class InventoryScreen extends React.Component {
                     key={vatom.id}
                     style={{ margin: 10, width:'170px', height:'170px' }}
                     onClick={e => window.location.hash='/face/'+vatom.id}>
-                    <VatomViewContainer vatom={vatom} fsp={FaceSelection.Icon} style={{ width:'100px', height:'100px', margin: '0 auto'}}  />
+                    <VatomViewContainer vatom={vatom} fsp={LightIconsOnly} style={{ width:'100px', height:'100px', margin: '0 auto'}}  />
                     <CardContent style={{fontSize: '12px'}}>
                     {vatom.properties.title}
                     </CardContent>
