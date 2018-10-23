@@ -11,9 +11,6 @@ import InputLabel from '@material-ui/core/InputLabel';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 
-if(!BLOCKv.UserManager.isLoggedIn)
- window.location.hash = '/login';
-
 var cardStyle = {
     display: 'block',
     width: '50%',
@@ -28,15 +25,22 @@ export default class ProfileScreen extends React.Component {
             password: '',
             firstName: '',
             lastName : ''
-           
+
         }
     }
 
-    componentDidMount(){
+    componentDidMount() {
+
+        // Go to login screen if not logged in
+        if (!BLOCKv.UserManager.isLoggedIn) {
+            window.location.hash = '/login'
+            return
+        }
+
+        // Load current user's profile
         BLOCKv.UserManager.getCurrentUser().then((e) => {
             console.log(e);
-            this.setState({ profile: e});
-            
+            this.setState({ profile: e });
         })
 
     }
@@ -56,7 +60,7 @@ export default class ProfileScreen extends React.Component {
         BLOCKv.UserManager.updateUser(payload).then( (e) => { console.log(e); window.location.reload()});
     }
 
-    
+
 
     render(){
         return <React.Fragment>
@@ -109,16 +113,16 @@ export default class ProfileScreen extends React.Component {
                                 <FormControl margin="normal" fullWidth>
                                     <InputLabel htmlFor="firstname">First Name</InputLabel>
                                     <Input name="firstname" type="text" defaultValue={this.state.profile.firstName} onChange={e => this.setState({ firstName : e.target.value})} />
-                                </FormControl>   
+                                </FormControl>
                                 <FormControl margin="normal" fullWidth>
                                     <InputLabel>Last Name</InputLabel>
                                     <Input type="text" defaultValue={this.state.profile.lastName} onChange={e => this.setState({ lastName: e.target.value})} />
                                 </FormControl>
-                                <FormControl margin="normal"  fullWidth>    
+                                <FormControl margin="normal"  fullWidth>
                                     <InputLabel>New Password:</InputLabel>
                                     <Input type="password"  onChange={e => this.setState({ password: e.target.value })} />
-                                </FormControl>  
-                                <FormControl margin="normal" required fullWidth> 
+                                </FormControl>
+                                <FormControl margin="normal" required fullWidth>
                                     <Button onClick={e => this.updateProfile()} type="button" fullWidth variant="raised" color="primary">Update Profile</Button>
                                 </FormControl>
                             </form>
@@ -126,13 +130,13 @@ export default class ProfileScreen extends React.Component {
                     </Card>
                 </Grid>
             </Grid>
-              
-            
+
+
         </React.Fragment>
     }
 
-    
 
-    
 
-} 
+
+
+}

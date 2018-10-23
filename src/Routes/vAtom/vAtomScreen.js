@@ -7,9 +7,6 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 
-if(!BLOCKv.UserManager.isLoggedIn)
- window.location.hash = '/login';
-
 const styles = {
     card: {
       maxWidth: 345,
@@ -18,7 +15,7 @@ const styles = {
       height: 0,
       paddingTop: '56.25%', // 16:9
     },
-    
+
   };
 
 export default class vAtomScreen extends React.Component {
@@ -26,31 +23,39 @@ export default class vAtomScreen extends React.Component {
         super(props)
         this.state = {
             vatom : '',
-            resources : [], 
+            resources : [],
             states : [],
         }
     }
 
-    componentDidMount(){
+    componentDidMount() {
+
+        // Go to login screen if not logged in
+        if (!BLOCKv.UserManager.isLoggedIn) {
+            window.location.hash = '/login'
+            return
+        }
+
+        // Load vatom
         const vid = this.props.match.params.id;
         BLOCKv.Vatoms.getUserVatoms([vid]).then(e => {
             let res = e[0].properties.resources;
             this.setState({vatom : e[0], resources: res});
         });
-        
-        
+
+
     }
 
     render(){
 
-        
+
 
         return <React.Fragment>
             <TopBar />
             <Card>
             <CardContent>
-            
-                <h1>vAtom Information</h1> 
+
+                <h1>vAtom Information</h1>
                 <div class="info" style={{textAlign: 'left', padding: '10px'}}>
                     <label>ID: {this.state.vatom && this.state.vatom.id}</label>
                     <hr />
@@ -138,7 +143,7 @@ export default class vAtomScreen extends React.Component {
                     <div>
                         <h3>Resources</h3>
                         {this.state.resources.map(res =>  <span key={res.name}><label>{res.name}: {decodeURI(res.value.value)}</label> <hr /></span> )}
-                    </div> 
+                    </div>
                     <div>
                         <h3>States</h3>
                         {this.state.states.map(st =>  <span key={st.name}><label>{st.name}: {st.value.value}</label> <hr /></span> )}
@@ -149,10 +154,10 @@ export default class vAtomScreen extends React.Component {
                         <hr />
                         <label>Value: {this.state.vatom && this.state.vatom.properties.visibility.value}</label>
                         <hr />
-                        
-                    </div>               
+
+                    </div>
                 </div>
-           
+
            </CardContent>
            </Card>
            </React.Fragment>

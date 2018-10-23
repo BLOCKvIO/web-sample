@@ -1,4 +1,5 @@
-import Blockv from '@blockv/sdk/face'
+import Blockv, { VatomView } from '@blockv/sdk/face'
+import Face3D from '@blockv/3d-face'
 
 export default new Blockv({
     "appID" : "{{APPID}}",
@@ -6,3 +7,6 @@ export default new Blockv({
     "websocketAddress" : "wss://newws.blockv.io",
     "prefix" : "dev"
 })
+
+// Register faces
+VatomView.registerFace(Face3D)

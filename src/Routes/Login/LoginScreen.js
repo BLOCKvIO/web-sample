@@ -14,9 +14,6 @@ import InputLabel from '@material-ui/core/InputLabel';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 
-if(BLOCKv.UserManager.isLoggedIn)
- window.location.hash = '/inventory'
-
 function TabContainer(props) {
     return (
       <Typography component="div" style={{ padding: 8 * 3 }}>
@@ -24,11 +21,11 @@ function TabContainer(props) {
       </Typography>
     );
   }
-  
+
   TabContainer.propTypes = {
     children: PropTypes.node.isRequired,
   };
-  
+
   const styles = theme => ({
     root: {
       flexGrow: 1,
@@ -44,11 +41,19 @@ export default class LoginScreen extends React.Component {
         this.state.password = ""
         this.state.isLoggedIn = false
         this.state.value = 0
-    }   
+    }
 
     handleChange = (event, value) => {
         this.setState({ value });
     };
+
+    componentDidMount() {
+
+        // Go to inventory screen if logged in already
+        if (!BLOCKv.UserManager.isLoggedIn)
+            window.location.hash = '/inventory'
+
+    }
 
     render() {
 
@@ -78,15 +83,15 @@ export default class LoginScreen extends React.Component {
                      <InputLabel htmlFor="password">Password</InputLabel>
                      <Input name="password" defaultValue={this.state.password} onChange={e => this.setState({ password: e.target.value })} type='password' />
                     </FormControl>
-                    
+
                      <Button size="large" variant="contained" fullWidth color="primary" onClick={e => this.login()}>Login</Button>
                      <Button size="large" variant="contained" fullWidth color="secondary" onClick={e => window.location.hash='register'}>Register</Button>
                     </form>
                     </Grid>
                     <Grid item xs={7}></Grid>
                 </Grid>
-                
-                
+
+
             </TabContainer>
             }
             {value === 1 && <TabContainer>
@@ -102,18 +107,18 @@ export default class LoginScreen extends React.Component {
                         </FormControl>
                         <Button size="large" variant="contained" fullWidth color="primary" onClick={e => this.login()}>Login</Button>
                         <Button size="large" variant="contained" fullWidth color="secondary" onClick={e => window.location.hash='register'}>Register</Button>
-                        
+
                     </Grid>
                     <Grid item xs={3}></Grid>
                 </Grid>
             </TabContainer>}
-            
-        
-        </React.Fragment>     
+
+
+        </React.Fragment>
     }
 
     login() {
-      
+
 
         let loginType = 'email';
         if((this.state.username).indexOf('@') !== -1){
@@ -122,8 +127,8 @@ export default class LoginScreen extends React.Component {
           loginType = 'phone_number';
         }
 
-       
-        
+
+
         BLOCKv.UserManager.login(this.state.username, loginType,  this.state.password).then(e => {
 
             // Success! Go to next page
@@ -137,7 +142,7 @@ export default class LoginScreen extends React.Component {
             console.error(err)
 
         })
-        
+
 
     }
 
