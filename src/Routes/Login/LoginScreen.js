@@ -50,7 +50,7 @@ export default class LoginScreen extends React.Component {
     componentDidMount() {
 
         // Go to inventory screen if logged in already
-        if (!BLOCKv.UserManager.isLoggedIn)
+        if (BLOCKv.UserManager.isLoggedIn)
             window.location.hash = '/inventory'
 
     }

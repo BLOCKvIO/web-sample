@@ -6,6 +6,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import { withStyles } from '@material-ui/core/styles';
 import TopBar from '../../Common/TopBar';
 import VatomViewContainer from '../../Components/VatomViewContatiner'
+import LiveVatomViewContainer from '../../Components/LiveVatomViewContainer'
 import {FaceSelection} from '@blockv/sdk/face'
 
 export default class InventoryScreen extends React.Component {
@@ -75,7 +76,7 @@ export default class InventoryScreen extends React.Component {
                     key={vatom.id}
                     style={{ margin: 10, width:'170px', height:'170px' }}
                     onClick={e => window.location.hash='/face/'+vatom.id}>
-                    <VatomViewContainer vatom={vatom} fsp={LightIconsOnly} style={{ width:'100px', height:'100px', margin: '0 auto'}}  />
+                    <LiveVatomViewContainer vatom={vatom} fsp={LightIconsOnly} style={{ width:'100px', height:'100px', margin: '0 auto'}}  />
                     <CardContent style={{fontSize: '12px'}}>
                     {vatom.properties.title}
                     </CardContent>
