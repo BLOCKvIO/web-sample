@@ -8,6 +8,7 @@ import { withStyles } from '@material-ui/core/styles';
 import TopBar from '../../Common/TopBar';
 import { VatomView, FaceSelection } from '@blockv/sdk/face'
 import VatomViewContainer from '../../Components/VatomViewContatiner'
+import LiveVatomViewContainer from '../../Components/LiveVatomViewContainer'
 
 export default class FaceScreen extends React.Component {
 
@@ -44,26 +45,26 @@ export default class FaceScreen extends React.Component {
 
                 {/* Icon face */}
                 <Card style={{ width: 128, margin: 20, display: 'inline-block', verticalAlign: 'top' }}>
-                    <CardHeader subheader='Icon' style={{ backgroundColor: 'rgba(0, 0, 0, 0.03)' }} />
-                    <VatomViewContainer vatom={this.state.vatom} fsp={FaceSelection.Icon} style={{ width: 128, height: 128, margin: '0 auto'}} />
+                    <CardHeader subheader='Live Icon' style={{ backgroundColor: 'rgba(0, 0, 0, 0.03)' }} />
+                    <LiveVatomViewContainer vatom={this.state.vatom} fsp={FaceSelection.Icon} style={{ width: 128, height: 128, margin: '0 auto'}} />
                 </Card>
 
                 {/* Engaged face */}
                 <Card style={{ width: 300, margin: 20, display: 'inline-block', verticalAlign: 'top' }}>
                     <CardHeader subheader='Engaged' style={{ backgroundColor: 'rgba(0, 0, 0, 0.03)' }} />
-                    <VatomViewContainer vatom={this.state.vatom} fsp={FaceSelection.Engaged} style={{ width: 300, height: 300, margin: '0 auto'}} />
+                    <LiveVatomViewContainer vatom={this.state.vatom} fsp={FaceSelection.Engaged} style={{ width: 300, height: 300, margin: '0 auto'}} />
                 </Card>
 
                 {/* Card face */}
                 <Card style={{ width: 375, margin: 20, display: 'inline-block', verticalAlign: 'top' }}>
                     <CardHeader subheader='Card' style={{ backgroundColor: 'rgba(0, 0, 0, 0.03)' }} />
-                    <VatomViewContainer vatom={this.state.vatom} fsp={FaceSelection.Card} style={{ width: 375, height: 600, margin: '0 auto'}} />
+                    <LiveVatomViewContainer vatom={this.state.vatom} fsp={FaceSelection.Card} style={{ width: 375, height: 600, margin: '0 auto'}} />
                 </Card>
 
-                {/* Card face */}
+                {/* FullScreen face */}
                 <Card style={{ position: 'relative', width: 'calc(100% - 80px)', margin: 20, display: 'inline-block', verticalAlign: 'top' }}>
                     <CardHeader subheader='Fullscreen' style={{ backgroundColor: 'rgba(0, 0, 0, 0.03)' }} />
-                    <VatomViewContainer vatom={this.state.vatom} fsp={FaceSelection.FullScreen} style={{ width: '100%', height: 600, margin: '0 auto'}} />
+                    <LiveVatomViewContainer vatom={this.state.vatom} fsp={FaceSelection.FullScreen} style={{ width: '100%', height: 600, margin: '0 auto'}} />
                 </Card>
 
             </div>
